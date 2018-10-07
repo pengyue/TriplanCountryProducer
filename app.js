@@ -9,7 +9,7 @@ const PRODUCER_COUNTRY_POST_URL = "/producer/country";
 
 const bodyParser = require('body-parser');
 const express = require('express');
-var countryProducer = require('./app/lonely_planet/producer/country_producer');
+var countryProducer = require('./app/lonely_planet/country_producer');
 
 const app  = express();
 
