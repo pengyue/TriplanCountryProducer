@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs')
 
 // App
-app.get('/', function (req, res) {
+app.get('/country/producer', function (req, res) {
     res.render('index');
 });
 

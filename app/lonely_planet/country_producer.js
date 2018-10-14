@@ -24,7 +24,6 @@ const KAFKA_BROKER_IP =
     + ':' + 
     (process.env.KAFKA_BROKER_PORT ? process.env.KAFKA_BROKER_PORT : "9092");
 
-var client;
 var kafka = require('kafka-node')
 var Producer = kafka.Producer
 var KeyedMessage = kafka.KeyedMessage;
@@ -33,7 +32,8 @@ var KeyedMessage = kafka.KeyedMessage;
 var kafkaConnectDescriptor = KAFKA_BROKER_IP;
  
 console.log("Running Module " + APP_NAME + " version " + APP_VERSION);
- 
+
+//initializeKafkaProducer
 function initializeKafkaProducer(attempt) {
     try {
         console.log(`Try to initialize Kafka Client at ${kafkaConnectDescriptor} and Producer, attempt ${attempt}`);
@@ -54,12 +54,7 @@ function initializeKafkaProducer(attempt) {
     }
 }
 
-//initializeKafkaProducer
-initializeKafkaProducer(KAFKA_RETRY_ATTEMPTS);
- 
-var eventPublisher = module.exports;
- 
-eventPublisher.publishEvent = function (eventKey, event) {
+function publishEvent(eventKey, event) {
     km = new KeyedMessage(eventKey, JSON.stringify(event));
     payloads = [
         { topic: TOPIC_NAME, messages: [km], partition: 0 }
@@ -72,11 +67,14 @@ eventPublisher.publishEvent = function (eventKey, event) {
     });
 }
 
+initializeKafkaProducer(KAFKA_RETRY_ATTEMPTS);
+
+var eventPublisher = module.exports;
+
 eventPublisher.run = function () {
   var countries = require(COUNTRY_JSON_DATA_FILE)
       countries.forEach( function(node){
           var country_url = LONELY_PLANET_BASE_URL + node.country.replace(/ /g,"-").toLowerCase();
-          //payloads.push({ topic: "countries", messages: country_url, partition: 0 });
-          eventPublisher.publishEvent("countries-producer-key", {"country": node.country, "country_url": country_url})
+          publishEvent("countries-producer-key", {"country": node.country, "country_url": country_url})
       });
 }
