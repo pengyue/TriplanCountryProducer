@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka
+  namespace: triplan
+data:
+  broker-ip: "kubernetes-kafka.kafka"
+  broker-port: "9092"
+  zookeeper-host-ip: "kubernetes-kafka-zookeeper.kafka"
+  zookeeper-host-port: "2181"

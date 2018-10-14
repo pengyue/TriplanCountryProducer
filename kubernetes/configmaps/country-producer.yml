@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: country-producer
+  namespace: triplan
+data:
+  node-ui-listen-port: "80"
+  lonely-planet-base-url: "https://www.lonelyplanet.com/"
+  kafka-country-topic-name: "test1"
+  country-json-data-file: "/app/node_modules/country-json/src/country-by-name.json"
