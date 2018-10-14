@@ -14,3 +14,11 @@ spec:
               serviceName: triplan-country-producer-service
               servicePort: 80
             path: /country/producer
+          - backend:
+              serviceName: triplan-city-producer-service
+              servicePort: 80
+            path: /css/style.css
+          - backend:
+              serviceName: triplan-city-producer-service
+              servicePort: 80
+            path: /producer/country
