@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: city-producer
+  namespace: triplan
+data:
+  lonely-planet-base-url: "https://www.lonelyplanet.com/"
+  kafka-city-topic-name: "test-cities"

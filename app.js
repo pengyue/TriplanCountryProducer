@@ -1,7 +1,7 @@
 'use strict';
 
 // Constants
-const PORT = (process.env.PRODUCER_NODE_UI_LISTEN_PORT) ? process.env.PRODUCER_NODE_UI_LISTEN_PORT : 8085;
+const PORT = (process.env.PRODUCER_NODE_UI_LISTEN_PORT) ? process.env.PRODUCER_NODE_UI_LISTEN_PORT : 8100;
 const HOST = '0.0.0.0';
 const HEALTH_LIVENESS = "/health-liveness";
 const HEALTH_READINESS = "/health-readiness";

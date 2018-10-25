@@ -1,12 +1,11 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: app
+  name: country-app
   namespace: triplan
 data:
   app-version: 0.1.0
   app-log-level: "error"
-  app-log-exclude-channels: "['!doctrine', '!event']"
   app-env: "dev"
   app-debug: "true"
   app-locale: "en"

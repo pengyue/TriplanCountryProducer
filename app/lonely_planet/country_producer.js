@@ -27,7 +27,8 @@ const KAFKA_BROKER_IP =
 var kafka = require('kafka-node')
 var Producer = kafka.Producer
 var KeyedMessage = kafka.KeyedMessage;
- 
+var eventPublisher = module.exports;
+
 // from the Oracle Event Hub - Platform Cluster Connect Descriptor
 var kafkaConnectDescriptor = KAFKA_BROKER_IP;
  
@@ -40,7 +41,6 @@ function initializeKafkaProducer(attempt) {
         const client = new kafka.KafkaClient({ kafkaHost: kafkaConnectDescriptor });
         console.log("Created client");
         producer = new Producer(client);
-        console.log("Submitted async producer creation request");
         producer.on('ready', function () {
             console.log("Producer is ready in " + APP_NAME);
         });
@@ -69,12 +69,10 @@ function publishEvent(eventKey, event) {
 
 initializeKafkaProducer(KAFKA_RETRY_ATTEMPTS);
 
-var eventPublisher = module.exports;
-
 eventPublisher.run = function () {
-  var countries = require(COUNTRY_JSON_DATA_FILE)
-      countries.forEach( function(node){
-          var country_url = LONELY_PLANET_BASE_URL + node.country.replace(/ /g,"-").toLowerCase();
-          publishEvent("countries-producer-key", {"country": node.country, "country_url": country_url})
-      });
+    var countries = require(COUNTRY_JSON_DATA_FILE)
+    countries.forEach( function(node){
+        var country_url = LONELY_PLANET_BASE_URL + node.country.replace(/ /g,"-").toLowerCase();
+        publishEvent("countries-producer-key", {"name": node.country, "url": country_url})
+    });
 }

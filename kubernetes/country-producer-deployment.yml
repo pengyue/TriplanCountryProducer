@@ -57,12 +57,12 @@ spec:
         - name: APP_VERSION
           valueFrom:
             configMapKeyRef:
-              name: app
+              name: country-app
               key: app-version
         - name: APP_HTTP_PORT
           valueFrom:
             configMapKeyRef:
-              name: app
+              name: country-app
               key: app-http-port
 
         - name: KAFKA_BROKER_IP
