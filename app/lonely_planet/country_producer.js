@@ -7,10 +7,10 @@ const APP_VERSION =
 const APP_NAME =
     process.env.APP_NAME ? process.env.APP_NAME : "triplan-scrapper";
 
-const TOPIC_NAME =
+const COUNTRY_TOPIC_NAME =
     process.env.PRODUCER_KAFKA_COUNTRY_TOPIC_NAME
         ? process.env.PRODUCER_KAFKA_COUNTRY_TOPIC_NAME
-        : "test1";
+        : "triplan-country";
 
 const COUNTRY_JSON_DATA_FILE =
     process.env.PRODUCER_COUNTRY_JSON_DATA_FILE
@@ -57,13 +57,13 @@ function initializeKafkaProducer(attempt) {
 function publishEvent(eventKey, event) {
     km = new KeyedMessage(eventKey, JSON.stringify(event));
     payloads = [
-        { topic: TOPIC_NAME, messages: [km], partition: 0 }
+        { topic: COUNTRY_TOPIC_NAME, messages: [km], partition: 0 }
     ];
     producer.send(payloads, function (err, event) {
         if (err) {
-            console.error("Failed to publish event with key " + eventKey + " to topic " + TOPIC_NAME + " :" + JSON.stringify(err));
+            console.error("Failed to publish event with key " + eventKey + " to topic " + COUNTRY_TOPIC_NAME + " :" + JSON.stringify(err));
         }
-        console.log("Published event with key " + eventKey + " to topic " + TOPIC_NAME + " :" + JSON.stringify(event));
+        console.log("Published event with key " + eventKey + " to topic " + COUNTRY_TOPIC_NAME + " :" + JSON.stringify(event));
     });
 }
 
