@@ -59,11 +59,11 @@ function publishEvent(eventKey, event) {
     payloads = [
         { topic: TOPIC_NAME, messages: [km], partition: 0 }
     ];
-    producer.send(payloads, function (err, data) {
+    producer.send(payloads, function (err, event) {
         if (err) {
             console.error("Failed to publish event with key " + eventKey + " to topic " + TOPIC_NAME + " :" + JSON.stringify(err));
         }
-        console.log("Published event with key " + eventKey + " to topic " + TOPIC_NAME + " :" + JSON.stringify(data));
+        console.log("Published event with key " + eventKey + " to topic " + TOPIC_NAME + " :" + JSON.stringify(event));
     });
 }
 

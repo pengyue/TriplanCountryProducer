@@ -8,7 +8,7 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 8100
     protocol: TCP
   selector:
     k8s-app: triplan-country-producer

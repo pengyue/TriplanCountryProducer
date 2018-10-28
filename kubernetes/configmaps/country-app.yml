@@ -9,4 +9,4 @@ data:
   app-env: "dev"
   app-debug: "true"
   app-locale: "en"
-  app-http-port: "80"
+  app-http-port: "8100"

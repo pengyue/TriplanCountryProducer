@@ -21,12 +21,12 @@ spec:
       - name: triplan
         image: pengyue/triplan-country-producer:latest
         ports:
-          - containerPort: 80
+          - containerPort: 8100
             protocol: TCP
         livenessProbe:
           httpGet:
             path: /health-liveness
-            port: 80
+            port: 8100
             scheme: HTTP
           initialDelaySeconds: 5
           periodSeconds: 10
@@ -36,7 +36,7 @@ spec:
         readinessProbe:
           httpGet:
             path: /health-readiness
-            port: 80
+            port: 8100
             scheme: HTTP
           initialDelaySeconds: 5
           periodSeconds: 10

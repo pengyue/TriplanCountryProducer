@@ -5,4 +5,6 @@ metadata:
   namespace: triplan
 data:
   lonely-planet-base-url: "https://www.lonelyplanet.com/"
-  kafka-city-topic-name: "test-cities"
+  kafka-city-topic-name: "lonely-planet-top-10-city"
+  kafka-city-topic-key: "lonely-planet-top-10-city-key"
+

@@ -5,7 +5,7 @@ metadata:
   namespace: triplan
 data:
   lonely-planet-base-url: "https://www.lonelyplanet.com/"
-  kafka-country-topic-name: "test1"
+  kafka-country-topic-name: "triplan-country"
   consumer-option-protocol: "roundrobin"
   consumer-option-from-offset: "earliest"
   consumer-option-consumer-group-id: "countries-consumer-group"
