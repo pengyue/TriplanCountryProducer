@@ -4,7 +4,7 @@ metadata:
   name: country-producer
   namespace: triplan
 data:
-  node-ui-listen-port: "80"
+  node-ui-listen-port: "8100"
   lonely-planet-base-url: "https://www.lonelyplanet.com/"
-  kafka-country-topic-name: "country-consumer.yml"
+  kafka-country-topic-name: "triplan-country"
   country-json-data-file: "/app/node_modules/country-json/src/country-by-name.json"
